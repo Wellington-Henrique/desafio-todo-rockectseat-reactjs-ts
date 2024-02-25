@@ -47,6 +47,7 @@ export function Form() {
                     value={currentTask}
                     placeholder='Adicione uma nova tarefa'
                     onChange={handleChange} 
+                    required
                 />
                 <button type='submit'>
                     Criar
