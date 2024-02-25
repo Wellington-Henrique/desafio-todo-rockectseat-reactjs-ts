@@ -11,10 +11,11 @@ export interface TaskType {
 
 interface TaskListProps {
     tasks: TaskType[]
-    onDelete: () => void
+    onComplete: (id: string) => void
+    onDelete: (id: string) => void
 }
 
-export function TaskList({ tasks, onDelete } : TaskListProps) {
+export function TaskList({ tasks, onComplete, onDelete } : TaskListProps) {
     const hasTasks = tasks.length > 0;
     const completedTasks = tasks.filter(task => task.isCompleted).length;
 
@@ -39,10 +40,11 @@ export function TaskList({ tasks, onDelete } : TaskListProps) {
 
             {hasTasks ?
                 tasks.map(task => 
-                    <TaskCard 
+                    <TaskCard
                         description={task.description} 
                         isCompleted={task.isCompleted}
-                        onDelete={onDelete} 
+                        onComplete={() => onComplete(task.id)} 
+                        onDelete={() => onDelete(task.id)} 
                 />)
             : <div className={style.emptyTasksMsgContainer}>
                 <img src={taskIco}/>

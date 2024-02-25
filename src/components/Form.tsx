@@ -17,8 +17,20 @@ export function Form() {
     const handleCreateNewTask = (e: FormEvent) => {
         e.preventDefault()
         
-        setTasks(prev => [...prev, {id: tasks.length.toString(), description: currentTask}])
+        setTasks(prev => [...prev, {id: tasks.length.toString(), description: currentTask, isCompleted: false}])
         setCurrentTask('')
+    }
+
+    const handleCompleteTask = (id: string) => {
+        const updatedTaskListWihMoreOneCompleted = tasks.map(task => {
+            if (task.id === id) {
+                return {...task, isCompleted: !task.isCompleted}
+            }
+
+            return task
+        })
+
+        setTasks(updatedTaskListWihMoreOneCompleted)
     }
 
     return(
@@ -36,7 +48,11 @@ export function Form() {
                 </button>
             </form>
 
-            <TaskList tasks={tasks} onDelete={() => console.log('deletando...')}/>
+            <TaskList 
+                tasks={tasks} 
+                onComplete={handleCompleteTask} 
+                onDelete={() => console.log('deletando...')}
+            />
         </>
     )
 }

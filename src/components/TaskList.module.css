@@ -35,8 +35,9 @@
 }
 
 .counter {
-    width: 1.5625rem;
-    border-radius: 8px;
+    padding: 0.125rem 0.5rem;
+
+    border-radius: 999rem;
     background-color: var(--gray-400);
     color: var(--gray-200);
     font-size: 0.75rem;
