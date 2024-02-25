@@ -33,6 +33,12 @@ export function Form() {
         setTasks(updatedTaskListWihMoreOneCompleted)
     }
 
+    const handleDeleteTask = (id: string) => {
+        const updatedTaskListWihMoreOneDeleted = tasks.filter(task => task.id !== id)
+
+        setTasks(updatedTaskListWihMoreOneDeleted)
+    }
+
     return(
         <>
             <form className={style.formContent} onSubmit={handleCreateNewTask}>
@@ -51,7 +57,7 @@ export function Form() {
             <TaskList 
                 tasks={tasks} 
                 onComplete={handleCompleteTask} 
-                onDelete={() => console.log('deletando...')}
+                onDelete={handleDeleteTask}
             />
         </>
     )
