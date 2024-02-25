@@ -1,11 +1,12 @@
 import taskIco from '../assets/task-ico.svg'
+import { TaskCard } from './TaskCard'
 
 import style from './TaskList.module.css'
 
 export interface TaskType {
     id: string
     description: string
-    isCompleted?: boolean
+    isCompleted: boolean
 }
 
 interface TaskListProps {
@@ -37,7 +38,12 @@ export function TaskList({ tasks, onDelete } : TaskListProps) {
             </div>
 
             {hasTasks ?
-                tasks.map(task => <p>{task.description}</p>)
+                tasks.map(task => 
+                    <TaskCard 
+                        description={task.description} 
+                        isCompleted={task.isCompleted}
+                        onDelete={onDelete} 
+                />)
             : <div className={style.emptyTasksMsgContainer}>
                 <img src={taskIco}/>
                 <div>
