@@ -75,3 +75,10 @@
     flex-direction: column;
     color: var(--gray-300);
 }
+
+@media(max-width: 726px) {
+    .tasksContainer {
+        width: 100%;
+        padding: 0.256rem
+    }
+}

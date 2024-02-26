@@ -13,7 +13,6 @@
 
 .formContent input {
     flex: 1;
-    height: 100%;
 
     color: var(--gray-100);
     
@@ -58,4 +57,11 @@
     width: 1rem;
 
     fill: var(--gray-100);
+}
+
+@media(max-width: 726px) {
+    .formContent {
+        width: 100%;
+        padding: 0.256rem
+    }
 }
